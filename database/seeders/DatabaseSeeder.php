@@ -15,16 +15,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. 🌱 Creamos primero un colchón base de 50 Choferes y 100 Repuestos en el catálogo
+        // 1. Creamos primero un colchón base de 50 Choferes y 100 Repuestos en el catálogo
         $choferes = Chofer::factory(50)->create();
         $repuestos = Repuesto::factory(100)->create();
 
-        // 2. 🌱 Creamos 200 Vehículos distribuidos aleatoriamente entre los choferes existentes
+        // 2.  Creamos 200 Vehículos distribuidos aleatoriamente entre los choferes existentes
         $vehiculos = Vehiculo::factory(200)->create([
             'chofer_id' => fn () => $choferes->random()->id
         ]);
 
-        // 3. 🌱 Generamos los 1,000 Mantenimientos requeridos por la consigna masiva
+        // 3. Generamos los 1,000 Mantenimientos requeridos por la consigna masiva
         // Usamos chunks o colecciones para conectarlos eficientemente con la tabla pivote N a N
         Mantenimiento::factory(1000)->create([
             'vehiculo_id' => fn () => $vehiculos->random()->id

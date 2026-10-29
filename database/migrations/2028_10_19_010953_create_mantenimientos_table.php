@@ -9,7 +9,7 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-        public function up(): void
+    public function up(): void
     {
         Schema::create('mantenimientos', function (Blueprint $table) {
             $table->id();
@@ -21,10 +21,13 @@ return new class extends Migration
             $table->integer('kilometraje'); // Kilometraje al momento de hacer el servicio
             $table->string('taller');
             $table->decimal('costo_total', 10, 2)->default(0); // Costo monetario con dos decimales
+            
+            // AGREGAR AQUÍ: Columna para registrar de forma opcional la foto del comprobante
+            $table->string('factura_ruta')->nullable(); 
+            
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.

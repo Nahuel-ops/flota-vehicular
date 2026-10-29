@@ -11,7 +11,16 @@ class Mantenimiento extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['vehiculo_id', 'tipo', 'fecha', 'kilometraje', 'taller', 'costo_total'];
+    // AGREGAMOS 'factura_ruta' al final del array para habilitar su almacenamiento seguro
+    protected $fillable = [
+        'vehiculo_id', 
+        'tipo', 
+        'fecha', 
+        'kilometraje', 
+        'taller', 
+        'costo_total', 
+        'factura_ruta'
+    ];
 
     // Un mantenimiento pertenece a un Vehículo
     public function vehiculo(): BelongsTo
@@ -27,4 +36,3 @@ class Mantenimiento extends Model
                     ->withTimestamps();
     }
 }
-
