@@ -30,4 +30,4 @@ RUN composer install --no-dev --optimize-autoloader
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Comando por defecto para iniciar Apache en el puerto correcto de Render
-CMD php artisan storage:link && php artisan migrate:refresh --seed --force && apache2-foreground
+CMD ["apache2-foreground"]
